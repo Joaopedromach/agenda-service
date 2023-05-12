@@ -20,7 +20,7 @@ public class PacienteService {
     private final PacienteRepository repository;
     public Paciente salvar(Paciente paciente){
         //TODO para validar se o cpf ja nao existe
-        repository.save(paciente);
+        return repository.save(paciente);
     }
     public List<Paciente> listarTodos(){
         return repository.findAll();
