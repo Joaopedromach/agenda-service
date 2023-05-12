@@ -2,8 +2,8 @@ package agenda.com.agenda.domain.service;
 
 import agenda.com.agenda.domain.entity.Paciente;
 import agenda.com.agenda.domain.repository.PacienteRepository;
+import agenda.com.agenda.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +19,17 @@ public class PacienteService {
     //final depois que coloco ele nao pode receber outra por cima
     private final PacienteRepository repository;
     public Paciente salvar(Paciente paciente){
-        //TODO para validar se o cpf ja nao existe
-        return repository.save(paciente);
+        boolean existeCpf = false;
+        Optional<Paciente> optPaciente = repository.findByCpf(paciente.getCpf());
+        if (optPaciente.isPresent()){
+            if (!optPaciente.get().getId().equals(paciente.getId())){
+                    existeCpf = true;
+            }
+        }
+       if (existeCpf){
+          throw new BusinessException("Cpf ja cadastrado.");
+       }
+       return repository.save(paciente);
     }
     public List<Paciente> listarTodos(){
         return repository.findAll();
