@@ -20,7 +20,9 @@ public class PacienteService {
     private final PacienteRepository repository;
     public Paciente salvar(Paciente paciente){
         boolean existeCpf = false;
+
         Optional<Paciente> optPaciente = repository.findByCpf(paciente.getCpf());
+
         if (optPaciente.isPresent()){
             if (!optPaciente.get().getId().equals(paciente.getId())){
                     existeCpf = true;
