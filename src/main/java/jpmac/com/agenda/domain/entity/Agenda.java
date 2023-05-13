@@ -1,4 +1,4 @@
-package agenda.com.agenda.domain.entity;
+package jpmac.com.agenda.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

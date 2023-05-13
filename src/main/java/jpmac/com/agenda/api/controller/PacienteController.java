@@ -1,7 +1,10 @@
-package agenda.com.agenda.api.controller;
+package jpmac.com.agenda.api.controller;
 
-import agenda.com.agenda.domain.entity.Paciente;
-import agenda.com.agenda.domain.service.PacienteService;
+import jpmac.com.agenda.api.mapper.PacienteMapper;
+import jpmac.com.agenda.api.request.PacienteRequest;
+import jpmac.com.agenda.api.response.PacienteResponse;
+import jpmac.com.agenda.domain.entity.Paciente;
+import jpmac.com.agenda.domain.service.PacienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +20,11 @@ public class PacienteController {
     
     private final PacienteService service;
     @PostMapping
-    public ResponseEntity <Paciente> salvar(@RequestBody Paciente paciente){
+    public ResponseEntity<Paciente> salvar(@RequestBody PacienteRequest request){
+        Paciente paciente = PacienteMapper.toPaciente(request);
         Paciente pacienteSalvo = service.salvar(paciente);
+        PacienteResponse pacienteResponse = PacienteMapper.toPacienteResponse(pacienteSalvo);
         return ResponseEntity.status(HttpStatus.CREATED).body(pacienteSalvo);
-
     }
     @GetMapping
     public ResponseEntity <List<Paciente>> listarTodos(){

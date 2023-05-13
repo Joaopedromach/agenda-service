@@ -1,7 +1,7 @@
-package agenda.com.agenda.config;
+package jpmac.com.agenda.config;
 
-import agenda.com.agenda.config.models.ApiError;
-import agenda.com.agenda.exception.BusinessException;
+import jpmac.com.agenda.config.models.ApiError;
+import jpmac.com.agenda.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

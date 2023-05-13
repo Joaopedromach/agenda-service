@@ -1,8 +1,8 @@
-package agenda.com.agenda.domain.service;
+package jpmac.com.agenda.domain.service;
 
-import agenda.com.agenda.domain.entity.Paciente;
-import agenda.com.agenda.domain.repository.PacienteRepository;
-import agenda.com.agenda.exception.BusinessException;
+import jpmac.com.agenda.domain.entity.Paciente;
+import jpmac.com.agenda.domain.repository.PacienteRepository;
+import jpmac.com.agenda.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

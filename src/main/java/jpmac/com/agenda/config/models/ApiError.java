@@ -1,4 +1,4 @@
-package agenda.com.agenda.config.models;
+package jpmac.com.agenda.config.models;
 
 import lombok.Data;
 
