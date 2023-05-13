@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @Service
 @Transactional
-//Para nao precisar criar o construtor eu uso o
 @RequiredArgsConstructor
 public class PacienteService {
     //puxar o repository para passar o controle para o spring para nao passar o new eu dou o @Auto
