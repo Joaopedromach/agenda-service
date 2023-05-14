@@ -1,6 +1,8 @@
 package jpmac.com.agenda.api.controller;
 
 import jakarta.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 import jpmac.com.agenda.api.mapper.PacienteMapper;
 import jpmac.com.agenda.api.request.PacienteRequest;
 import jpmac.com.agenda.api.response.PacienteResponse;
@@ -11,14 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/paciente")
 public class PacienteController {
-    
+
     private final PacienteService service;
     private final PacienteMapper mapper;
     @PostMapping
