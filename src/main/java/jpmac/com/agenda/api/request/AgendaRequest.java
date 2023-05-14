@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @NoArgsConstructor
 public class AgendaRequest {
   @NotBlank private String descricao;
-  @NotNull @Future @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
+  @NotNull @Future
   private LocalDateTime horario;
   @NotNull private Long pacienteId;
 }

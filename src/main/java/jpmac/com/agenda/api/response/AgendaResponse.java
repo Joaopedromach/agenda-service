@@ -16,6 +16,5 @@ public class AgendaResponse {
   private Long id;
   private String descricao;
   private LocalDateTime horario;
-  private LocalDateTime dataCriacao;
   private PacienteResponse paciente;
 }
