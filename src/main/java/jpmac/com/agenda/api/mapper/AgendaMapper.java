@@ -18,8 +18,8 @@ public class AgendaMapper {
     return mapper.map(request, Agenda.class);
   }
 
-  public AgendaResponse toAgendaResponse(Agenda paciente) {
-    return mapper.map(paciente, AgendaResponse.class);
+  public AgendaResponse toAgendaResponse(Agenda agenda) {
+    return mapper.map(agenda, AgendaResponse.class);
   }
 
   public List<AgendaResponse> toAgendaResponseList(List<Agenda> agendas) {
