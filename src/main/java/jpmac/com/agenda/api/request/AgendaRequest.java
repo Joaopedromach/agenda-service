@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
@@ -15,6 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AgendaRequest {
   @NotBlank private String descricao;
-  @NotNull @Future private LocalDateTime horario;
+  @NotNull @Future @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
+  private LocalDateTime horario;
   @NotNull private Long pacienteId;
 }

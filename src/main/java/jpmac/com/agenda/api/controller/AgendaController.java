@@ -2,6 +2,8 @@ package jpmac.com.agenda.api.controller;
 
 import java.util.List;
 import java.util.Optional;
+
+import jakarta.validation.Valid;
 import jpmac.com.agenda.api.mapper.AgendaMapper;
 import jpmac.com.agenda.api.request.AgendaRequest;
 import jpmac.com.agenda.api.response.AgendaResponse;
@@ -39,7 +41,7 @@ public class AgendaController {
   }
 
   @PostMapping
-  public ResponseEntity<AgendaResponse> salvar(@RequestBody AgendaRequest request) {
+  public ResponseEntity<AgendaResponse> salvar(@Valid @RequestBody AgendaRequest request) {
     Agenda agenda = mapper.toAgenda(request);
     Agenda agendaSalva = service.salvar(agenda);
     AgendaResponse agendaResponse = mapper.toAgendaResponse(agendaSalva);
