@@ -27,9 +27,10 @@ public class PacienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(pacienteSalvo);
     }
     @GetMapping
-    public ResponseEntity <List<Paciente>> listarTodos(){
+    public ResponseEntity<List<PacienteResponse>> listarTodos(){
         List<Paciente> pacientes = service.listarTodos();
-        return ResponseEntity.status(HttpStatus.OK).body(pacientes);
+        List<PacienteResponse> pacienteResponses = PacienteMapper.toPacienteResponseList(pacientes);
+        return ResponseEntity.status(HttpStatus.OK).body(pacienteResponses);
     }
     @GetMapping("/{id}")
     public ResponseEntity <Paciente> buscarPorId(@PathVariable Long id){
