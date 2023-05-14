@@ -44,4 +44,14 @@ public class PacienteService {
     public void deletar(Long id){
         repository.deleteById(id);
     }
+
+    public Paciente alterar(Long id, Paciente paciente) {
+        Optional<Paciente> optPaciente = this.buscarporId(id);
+
+        if (optPaciente.isEmpty()){
+            throw new BusinessException("Paciente nao cadastrado");
+        }
+        paciente.setId(id);
+        return salvar(paciente);
+    }
 }

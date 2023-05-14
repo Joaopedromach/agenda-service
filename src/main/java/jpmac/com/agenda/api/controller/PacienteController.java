@@ -1,5 +1,6 @@
 package jpmac.com.agenda.api.controller;
 
+import jakarta.validation.Valid;
 import jpmac.com.agenda.api.mapper.PacienteMapper;
 import jpmac.com.agenda.api.request.PacienteRequest;
 import jpmac.com.agenda.api.response.PacienteResponse;
@@ -21,7 +22,7 @@ public class PacienteController {
     private final PacienteService service;
     private final PacienteMapper mapper;
     @PostMapping
-    public ResponseEntity<Paciente> salvar(@RequestBody PacienteRequest request){
+    public ResponseEntity<Paciente> salvar(@Valid @RequestBody PacienteRequest request){
         Paciente paciente = mapper.toPaciente(request);
         Paciente pacienteSalvo = service.salvar(paciente);
         PacienteResponse pacienteResponse = mapper.toPacienteResponse(pacienteSalvo);
@@ -42,8 +43,9 @@ public class PacienteController {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toPacienteResponse(optPacientes.get()));
     }
     @PutMapping
-    public ResponseEntity<PacienteResponse> alterar(@RequestBody Paciente paciente){
-        Paciente pacienteSalvo = service.salvar(paciente);
+    public ResponseEntity<PacienteResponse> alterar(@PathVariable Long id,@RequestBody PacienteRequest request){
+        Paciente paciente = mapper.toPaciente(request);
+        Paciente pacienteSalvo = service.alterar(id, paciente);
         PacienteResponse pacienteResponse = mapper.toPacienteResponse(pacienteSalvo);
         return ResponseEntity.status(HttpStatus.OK).body(pacienteResponse);
     }

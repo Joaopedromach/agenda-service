@@ -27,4 +27,5 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         log.error("Erro de BusinessException: " + LocalDateTime.now() +  "  Message: " + messageError);
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ApiError(001, messageError));
     }
+
 }
