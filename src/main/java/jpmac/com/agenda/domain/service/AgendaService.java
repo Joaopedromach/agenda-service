@@ -27,16 +27,21 @@ public class AgendaService {
   }
 
   public Agenda salvar(Agenda agenda) {
-    Optional<Paciente> optPaciente = pacienteService.buscarporId(agenda.getPaciente().getId());
+    Optional<Paciente> optPaciente = pacienteService.buscarPorId(agenda.getPaciente().getId());
+
     if (optPaciente.isEmpty()) {
       throw new BusinessException("Paciente não encontrado");
     }
+
     Optional<Agenda> optHorario = repository.findByHorario(agenda.getHorario());
+
     if (optHorario.isPresent()) {
       throw new BusinessException("Já existe agendamento para este horário");
     }
+
     agenda.setPaciente(optPaciente.get());
     agenda.setDataCriacao(LocalDateTime.now());
+
     return repository.save(agenda);
   }
 }

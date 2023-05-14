@@ -35,7 +35,7 @@ public class PacienteController {
     }
     @GetMapping("/{id}")
     public ResponseEntity <PacienteResponse> buscarPorId(@PathVariable Long id){
-        Optional<Paciente> optPacientes = service.buscarporId(id);
+        Optional<Paciente> optPacientes = service.buscarPorId(id);
         if (optPacientes.isEmpty()){
             return ResponseEntity.notFound().build();
         }

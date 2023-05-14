@@ -25,8 +25,8 @@ public class AgendaController {
   @GetMapping
   public ResponseEntity<List<AgendaResponse>> buscarTodos() {
     List<Agenda> agendas = service.listarTodos();
-    List<AgendaResponse> agendaResponse = mapper.toAgendaResponseList(agendas);
-    return ResponseEntity.status(HttpStatus.OK).body(agendaResponse);
+    List<AgendaResponse> agendaResponses = mapper.toAgendaResponseList(agendas);
+    return ResponseEntity.status(HttpStatus.OK).body(agendaResponses);
   }
 
   @GetMapping("/{id}")

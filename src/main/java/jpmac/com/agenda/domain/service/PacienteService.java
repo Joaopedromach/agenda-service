@@ -37,7 +37,7 @@ public class PacienteService {
     return repository.findAll();
   }
   // para buscar por Id eu dou um optional e retorno a classe
-  public Optional<Paciente> buscarporId(Long id) {
+  public Optional<Paciente> buscarPorId(Long id) {
     return repository.findById(id);
   }
 
@@ -46,7 +46,7 @@ public class PacienteService {
   }
 
   public Paciente alterar(Long id, Paciente paciente) {
-    Optional<Paciente> optPaciente = this.buscarporId(id);
+    Optional<Paciente> optPaciente = this.buscarPorId(id);
 
     if (optPaciente.isEmpty()) {
       throw new BusinessException("Paciente nao cadastrado");
